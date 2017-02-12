@@ -18,14 +18,14 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[shorewall_reloaded_test::shorewall4]
+      - recipe[shorewall_ng_test::shorewall4]
     verifier:
       inspec_tests:
         - test/recipes/default
     attributes:
   - name: shorewall5
     run_list:
-      - recipe[shorewall_reloaded_test::shorewall5]
+      - recipe[shorewall_ng_test::shorewall5]
     verifier:
       inspec_tests:
         - test/recipes/shorewall5

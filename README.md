@@ -1,10 +1,10 @@
-shorewall_reloaded Cookbook
+shorewall_ng Cookbook
 ===========================
 
 Description
 -----------
 
-This cookbook is based on the original in the Chef Supermarket by [charles-dyfis-net](https://supermarket.chef.io/users/charles-dyfis-net) for CentOS.
+This cookbook enables you to configure a shorewall4 and shorewall5 on a debian/ubunto based os a transparent, easy and encapsulated way
 
 [Shorewall](http://shorewall.net/) is a rather comprehensive and easy-to-use abstraction layer on top of iptables.
 
@@ -326,13 +326,21 @@ Contributing
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
 
+
+Credits 
+-----------
+
+This cookbook is heavily based on the nowdays no longer maintained cookbook https://github.com/demonccc/chef-shorewall_reloaded - thank you for you hard work Claudio!
+
 License and Authors
 -------------------
 
-Author:: Claudio Cesar Sanchez Tejeda <demonccc@gmail.com>
 Author:: Eugen Mayer (eugenmayer on github) 
 
-Copyright:: 2014, Claudio Cesar Sanchez Tejeda
+Old Author:: Claudio Cesar Sanchez Tejeda <demonccc@gmail.com>
+
+
+Copyright:: 2017, Eugen Mayer
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -345,6 +353,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
-[repo]: https://github.com/demonccc/chef-shorewall_reloaded
-[issues]: https://github.com/demonccc/chef-shorewall_reloaded/issues

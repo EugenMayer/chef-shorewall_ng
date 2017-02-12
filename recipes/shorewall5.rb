@@ -10,4 +10,4 @@ package 'shorewall' do
   action :install
 end
 
-include_recipe 'shorewall_reloaded::config'
+include_recipe 'shorewall_ng::config'

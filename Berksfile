@@ -5,5 +5,5 @@ metadata
 cookbook 'apt'
 
 group :integration do
-  cookbook 'shorewall_reloaded_test', path: 'test/cookbooks/shorewall_reloaded_test'
+  cookbook 'shorewall_ng_test', path: 'test/cookbooks/shorewall_ng_test'
 end

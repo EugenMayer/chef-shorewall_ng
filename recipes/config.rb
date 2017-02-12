@@ -1,9 +1,10 @@
 #
+# Author:: Eugen Mayer <eugen.mayer@kontextwork.de>
 # Author:: Claudio Cesar Sanchez Tejeda <demonccc@gmail.com>
-# Cookbook Name:: shorewall_reloaded
+# Cookbook Name:: shorewall_ng
 # Recipe:: config
 #
-# Copyright 2014, Claudio Cesar Sanchez Tejeda
+# Copyright:: 2017, Eugen Mayer
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
