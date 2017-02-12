@@ -16,4 +16,4 @@ bin/*
 .kitchen.local.yml
 
 .idea/workspace.xml
-
+syntaxcache
