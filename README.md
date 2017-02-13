@@ -32,23 +32,23 @@ comparable to hand-written ones.
 Recipes
 -------
 
-### shorewall_reloaded::default
+### shorewall_ng::default
 This cookbook installs and configures shorewall on the your node. The configuration version is derived from default[:shorewall][:version]
 
-### shorewall_reloaded::shorewall_any
+### shorewall_ng::shorewall_any
 the same as default, do not really use this di
 
-### shorewall_reloaded::shorewall5
+### shorewall_ng::shorewall5
 Forces a shorewall5 based configuration (overrides default[:shorewall][:version]). 
 This will not ensure you actually do install the right binary, see shorewall5_apt_fix below
 
-### shorewall_reloaded::shorewall5_apt_fix
+### shorewall_ng::shorewall5_apt_fix
 (Yet debian jessie only) Ensure proper sources are added to install the shorewall 5.x package
 
 Attributes
 ----------
 
-#### shorewall_reloaded::default
+#### shorewall_ng::default
 <table>
   <tr>
     <th>Key</th>
@@ -147,13 +147,13 @@ For more details, see the `attributes/default.rb` file.
 Usage
 -----
 
-Just include `shorewall_reloaded` in your node's `run_list`:
+Just include `shorewall_ng` in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[shorewall_reloaded]"
+    "recipe[shorewall_ng]"
   ]
 }
 ```
