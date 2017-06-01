@@ -305,11 +305,6 @@ The following is a typical example of output (in this case, for a rules file):
 
 Note how line continuations are added as necessary to keep column alignment in place.
 
-Development
------------
-
-- Source hosted at [GitHub][repo]
-- Report issues/Questions/Feature requests on [GitHub Issues][issues]
 
 Tests
 -----
@@ -320,12 +315,17 @@ Run the test by using kitchen
 Contributing
 ------------
 
-1. Fork the repository on [Github][repo]
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+I am very happy to accept this PRs or work on issues to extend the usage of this cookbook.
 
+Just use the [issue queue](https://github.com/EugenMayer/chef-shorewall_ng/issues) or even better, create pull requests for what you like to improve.
+
+# Testing
+
+You can run the test using kitchen
+
+    chef exec kitchen converge
+    
+There are to test suites, `default` for testing shorewall 4 and `shorewall5` to ensure we can install shorewall5 e.g. for docker support.
 
 Credits 
 -----------
