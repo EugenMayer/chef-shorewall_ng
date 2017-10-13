@@ -33,7 +33,5 @@ if node[:platform].include?('debian') and node[:platform_version].include?('8.')
     pin          'release o=Debian,a=unstable'
     pin_priority '900'
   end
-else
-  # TODO: implement this
 end
 

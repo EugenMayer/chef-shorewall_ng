@@ -4,7 +4,7 @@ shorewall_ng Cookbook
 Description
 -----------
 
-This cookbook enables you to configure a shorewall4 and shorewall5 on a debian/ubunto based os a transparent, easy and encapsulated way
+This cookbook enables you to configure a shorewall5 on a debian/ubunto based os a transparent, easy and encapsulated way
 
 [Shorewall](http://shorewall.net/) is a rather comprehensive and easy-to-use abstraction layer on top of iptables.
 
@@ -24,7 +24,7 @@ The following platforms have been tested with this cookbook, meaning that the re
 Capabilities
 ------------
 
-It supports shorewall4 and shorewall5, please see the recipes below.
+It supports shorewall5, please see the recipes below.
 
 Creates pretty Shorewall configuration files intended to be aesthetically
 comparable to hand-written ones.
@@ -279,7 +279,7 @@ Configuration
 The following is a typical example of output (in this case, for a rules file):
 
     #
-    # Shorewall version 4 - Rules File
+    # Shorewall version 5 - Rules File
     #
     # For information on the settings in this file, type "man shorewall-rules"
     #
@@ -325,7 +325,7 @@ You can run the test using kitchen
 
     chef exec kitchen converge
     
-There are to test suites, `default` for testing shorewall 4 and `shorewall5` to ensure we can install shorewall5 e.g. for docker support.
+There are to test suites, `default` for testing  `shorewall5` to ensure we can install shorewall5 e.g. for docker support.
 
 Credits 
 -----------

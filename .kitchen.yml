@@ -13,20 +13,17 @@ verifier:
   name: inspec
 
 platforms:
-  - name: debian-8.6
+  - name: eugenmayer/debian9
+    driver:
+      box: eugenmayer/debian9
+      box_version: "9.1.6"
+      gui: true
 
 suites:
   - name: default
     run_list:
-      - recipe[shorewall_ng_test::shorewall4]
+      - recipe[shorewall_ng_test::default]
     verifier:
       inspec_tests:
         - test/recipes/default
-    attributes:
-  - name: shorewall5
-    run_list:
-      - recipe[shorewall_ng_test::shorewall5]
-    verifier:
-      inspec_tests:
-        - test/recipes/shorewall5
     attributes:

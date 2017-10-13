@@ -38,16 +38,9 @@ enabled=(node['shorewall']['enabled'] ? 1 : 0 )
 
 end
 
-if node['shorewall']['version'] == 4
-  template '/etc/shorewall/shorewall.conf' do
-    source 'shorewall4.conf.erb'
-    notifies :restart, "service[shorewall]", :delayed
-  end
-else # shorewall 5
-  template '/etc/shorewall/shorewall.conf' do
-    source 'shorewall5.conf.erb'
-    notifies :restart, "service[shorewall]", :delayed
-  end
+template '/etc/shorewall/shorewall.conf' do
+  source 'shorewall5.conf.erb'
+  notifies :restart, "service[shorewall]", :delayed
 end
 
 template '/etc/default/shorewall' do

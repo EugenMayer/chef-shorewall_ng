@@ -17,11 +17,17 @@ end
 
 describe package('shorewall') do
   it { should be_installed }
-  its('version') { should match /^4\./ }
+  its('version') { should match /^5\./ }
 end
 
+
 describe file(shorewall_config_path) do
-  its('content') { should include 'shorewall.conf V4.0' }
+  its('content') { should include 'Shorewall Version 5' }
+end
+
+describe shorewall_config  do
+  its('DOCKER') { should eq 'Yes' }
+  its('IP_FORWARDING') { should eq 'Yes' }
 end
 
 describe shorewall_config  do
