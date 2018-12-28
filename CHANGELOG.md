@@ -1,6 +1,10 @@
 shorewall_ng CHANGELOG
 =======================
 
+0.3.0
+-----
+- Upgraded configuration to 5.1 / 5.2 standards, removed all deprecations
+
 0.2.0
 -----
 - removed shorewall4 support
