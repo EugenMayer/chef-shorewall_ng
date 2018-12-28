@@ -40,6 +40,8 @@ INVALID_LOG_LEVEL=
 
 LOG_BACKEND=
 
+LOG_ZONE=Both
+
 LOG_MARTIANS=<%= node['shorewall']['config']['log_martians'] %>
 
 LOG_VERBOSITY=<%= node['shorewall']['config']['log_verbosity'] %>
@@ -52,21 +54,21 @@ LOGFORMAT="<%= node['shorewall']['config']['logformat'] %>"
 
 LOGTAGONLY=<%= node['shorewall']['config']['logtagonly'] %>
 
-LOGLIMIT=
+LOGLIMIT="s:1/sec:10"
 
-MACLIST_LOG_LEVEL=info
+MACLIST_LOG_LEVEL="$LOG_LEVEL"
 
 RELATED_LOG_LEVEL=
 
-RPFILTER_LOG_LEVEL=info
+RPFILTER_LOG_LEVEL="$LOG_LEVEL"
 
-SFILTER_LOG_LEVEL=info
+SFILTER_LOG_LEVEL="$LOG_LEVEL"
 
-SMURF_LOG_LEVEL=info
+SMURF_LOG_LEVEL="$LOG_LEVEL"
 
 STARTUP_LOG=<%= node['shorewall']['config']['startup_log'] %>
 
-TCP_FLAGS_LOG_LEVEL=info
+TCP_FLAGS_LOG_LEVEL="$LOG_LEVEL"
 
 UNTRACKED_LOG_LEVEL=
 
@@ -76,7 +78,7 @@ UNTRACKED_LOG_LEVEL=
 
 ARPTABLES=
 
-CONFIG_PATH="${CONFDIR}/shorewall:${SHAREDIR}/shorewall"
+CONFIG_PATH=":${CONFDIR}/shorewall:${SHAREDIR}/shorewall"
 
 GEOIPDIR=/usr/share/xt_geoip/LE
 
@@ -108,11 +110,12 @@ TC=
 #		D E F A U L T   A C T I O N S / M A C R O S
 ###############################################################################
 
-ACCEPT_DEFAULT=none
-DROP_DEFAULT=Drop
-NFQUEUE_DEFAULT=none
-QUEUE_DEFAULT=none
-REJECT_DEFAULT=Reject
+ACCEPT_DEFAULT="none"
+BLACKLIST_DEFAULT="Broadcast(DROP),Multicast(DROP),dropNotSyn:$LOG_LEVEL,dropInvalid:$LOG_LEVEL,DropDNSrep:$LOG_LEVEL"
+DROP_DEFAULT="Broadcast(DROP),Multicast(DROP)"
+NFQUEUE_DEFAULT="none"
+QUEUE_DEFAULT="none"
+REJECT_DEFAULT="Broadcast(DROP),Multicast(DROP)"
 
 ###############################################################################
 #			 R S H / R C P	C O M M A N D S
@@ -139,13 +142,13 @@ AUTOCOMMENT=Yes
 
 AUTOHELPERS=Yes
 
-AUTOMAKE=No
+AUTOMAKE=Yes
 
 BASIC_FILTERS=No
 
 BLACKLIST="NEW,INVALID,UNTRACKED"
 
-CHAIN_SCRIPTS=Yes
+BALANCE_PROVIDERS=No
 
 CLAMPMSS=No
 
@@ -181,8 +184,6 @@ IGNOREUNKNOWNVARIABLES=No
 
 IMPLICIT_CONTINUE=No
 
-INLINE_MATCHES=No
-
 IPSET_WARNINGS=Yes
 
 IP_FORWARDING=<%= node['shorewall']['config']['ip_forwarding'] %>
@@ -197,13 +198,9 @@ MACLIST_TTL=
 
 MANGLE_ENABLED=Yes
 
-MAPOLDACTIONS=No
-
 MARK_IN_FORWARD_CHAIN=No
 
 MINIUPNPD=No
-
-MODULE_SUFFIX=ko
 
 MULTICAST=<%= node['shorewall']['config']['multicast'] %>
 
@@ -211,7 +208,11 @@ MUTEX_TIMEOUT=60
 
 NULL_ROUTE_RFC1918=No
 
-OPTIMIZE=0
+OPTIMIZE=All
+
+PERL_HASH_SEED=0
+
+RENAME_COMBINED=Yes
 
 OPTIMIZE_ACCOUNTING=No
 
@@ -239,9 +240,11 @@ TC_EXPERT=No
 
 TC_PRIOMAP="2 3 3 3 2 3 1 1 2 2 2 2 2 2 2 2"
 
-TRACK_PROVIDERS=No
+TRACK_PROVIDERS=Yes
 
 TRACK_RULES=No
+
+USE_NFLOG_SIZE=No
 
 USE_DEFAULT_RT=Yes
 
