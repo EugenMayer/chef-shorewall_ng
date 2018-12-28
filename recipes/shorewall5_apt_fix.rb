@@ -1,9 +1,7 @@
-########### ATTENTION! ################
-# this shorewall5 installation is only implemented for debian jessie and this recipe is not included by default
-# either you do it yourself or you pick this solution, up to you
-# also this does NOT handle upgrades - this is your task. Upgrading from 4.x to 5.x needs manual adjustment
-
+# for debian jessie only, since there was no shorewall 5.x
+# TODO: maybe do not use unstable here anylonger since stable has 5.0 already . time changed
 if node[:platform].include?('debian') and node[:platform_version].include?('8.')
+
   apt_repository 'unstable' do
     uri        'http://ftp.de.debian.org/debian'
     distribution 'unstable'
@@ -34,4 +32,3 @@ if node[:platform].include?('debian') and node[:platform_version].include?('8.')
     pin_priority '900'
   end
 end
-

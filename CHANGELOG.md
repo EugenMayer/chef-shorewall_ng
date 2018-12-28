@@ -1,6 +1,11 @@
 shorewall_ng CHANGELOG
 =======================
 
+0.3.1
+-----
+- Support 5.0 and 5.1+ installations, yet detected by disto version
+
+
 0.3.0
 -----
 - Upgraded configuration to 5.1 / 5.2 standards, removed all deprecations
