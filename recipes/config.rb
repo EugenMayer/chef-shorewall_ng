@@ -44,6 +44,7 @@ if node[:platform].include?('debian') and node[:platform_version].include?('9.')
     source 'shorewall5.0.conf.erb'
     notifies :restart, "service[shorewall]", :delayed
   end
+# TODO: we should cut off debian 8 support
 elsif node[:platform].include?('debian') and node[:platform_version].include?('8.')
   # since we used the unstable package for debian jessie, its 5.2 already, so use the new configuration
   template '/etc/shorewall/shorewall.conf' do
