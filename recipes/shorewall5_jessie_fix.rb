@@ -1,7 +1,6 @@
 # for debian jessie only, since there was no shorewall 5.x
 # TODO: maybe do not use unstable here anylonger since stable has 5.0 already . time changed
 if node[:platform].include?('debian') and node[:platform_version].include?('8.')
-
   apt_repository 'unstable' do
     uri        'http://ftp.de.debian.org/debian'
     distribution 'unstable'

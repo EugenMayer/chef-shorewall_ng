@@ -1,4 +1,3 @@
-default['shorewall']['version'] = 5
 default['shorewall']['enabled'] = false
 
 default['shorewall']['default']['options'] = ""

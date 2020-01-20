@@ -24,31 +24,19 @@ require 'set'
 enabled=(node['shorewall']['enabled'] ? 1 : 0 )
 
 %w{ hosts interfaces policy rules zones tunnels masq }.each do |conf_file|
-
   template "/etc/shorewall/#{conf_file}" do
     source "#{conf_file}.erb"
     mode 0600
     owner "root"
     group "root"
-    variables(
-        :version => node[:shorewall][:version]
-    )
     notifies :restart, "service[shorewall]", :delayed
   end
-
 end
 
 if node[:platform].include?('debian') and node[:platform_version].include?('9.')
   # debian stretch is yet 5.0 based, so use the old configuration
   template '/etc/shorewall/shorewall.conf' do
     source 'shorewall5.0.conf.erb'
-    notifies :restart, "service[shorewall]", :delayed
-  end
-# TODO: we should cut off debian 8 support
-elsif node[:platform].include?('debian') and node[:platform_version].include?('8.')
-  # since we used the unstable package for debian jessie, its 5.2 already, so use the new configuration
-  template '/etc/shorewall/shorewall.conf' do
-    source 'shorewall5.1plus.conf.erb'
     notifies :restart, "service[shorewall]", :delayed
   end
 else

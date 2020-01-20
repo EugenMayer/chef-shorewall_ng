@@ -8,7 +8,7 @@ provisioner:
   name: chef_zero
   #nodes_path: test/fixtures/nodes
   product_name: chef
-  product_version: 14.12
+  product_version: 15
 
 verifier:
   name: inspec
