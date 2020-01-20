@@ -14,12 +14,12 @@ Requirements
 ------------
 
 #### Chef
-Tested on 11.12.8 but newer and older version should work just fine.
+Tested on 12 and 15 but newer and older version should work just fine.
 
 #### Platform
 The following platforms have been tested with this cookbook, meaning that the recipes run on these platforms without error:
 - `Ubuntu`
-- `Debian`
+- `Debian`(8/9/10)
 
 Capabilities
 ------------
@@ -33,14 +33,7 @@ Recipes
 -------
 
 ### shorewall_ng::default
-This cookbook installs and configures shorewall on the your node. The configuration version is derived from default[:shorewall][:version]
-
-### shorewall_ng::shorewall_any
-the same as default, do not really use this di
-
-### shorewall_ng::shorewall5
-Forces a shorewall5 based configuration (overrides default[:shorewall][:version]). 
-This will not ensure you actually do install the right binary, see shorewall5_apt_fix below
+This cookbook installs and configures shorewall on the your node. 
 
 ### shorewall_ng::shorewall5_jessie_fix
 (Yet debian jessie only) Ensure proper sources are added to install the shorewall 5.x package
