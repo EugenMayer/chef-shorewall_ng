@@ -299,6 +299,16 @@ The following is a typical example of output (in this case, for a rules file):
 Note how line continuations are added as necessary to keep column alignment in place.
 
 
+
+# Release
+
+```bash
+bundle install --binstubs --without='development vagrant docker dokken integration' 
+./bin/stove login --username <user>--key ~/.ssh/key.pem
+# edit metadata.rb and release
+./bin/stove 
+```
+
 Tests
 -----
 
