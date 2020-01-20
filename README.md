@@ -42,7 +42,7 @@ the same as default, do not really use this di
 Forces a shorewall5 based configuration (overrides default[:shorewall][:version]). 
 This will not ensure you actually do install the right binary, see shorewall5_apt_fix below
 
-### shorewall_ng::shorewall5_apt_fix
+### shorewall_ng::shorewall5_jessie_fix
 (Yet debian jessie only) Ensure proper sources are added to install the shorewall 5.x package
 
 Attributes

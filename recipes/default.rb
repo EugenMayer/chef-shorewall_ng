@@ -1,4 +1,4 @@
-if node[:platform].include?('debian') and node[:platform_version].include?('8.')
+if node[:platform].start_with?('debian') and node[:platform_version].start_with?('8')
   include_recipe 'shorewall_ng::shorewall5_jessie_fix'
 end
 

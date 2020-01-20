@@ -33,7 +33,7 @@ enabled=(node['shorewall']['enabled'] ? 1 : 0 )
   end
 end
 
-if node[:platform].include?('debian') and node[:platform_version].include?('9.')
+if node[:platform].start_with?('debian') and node[:platform_version].start_with?('9')
   # debian stretch is yet 5.0 based, so use the old configuration
   template '/etc/shorewall/shorewall.conf' do
     source 'shorewall5.0.conf.erb'
@@ -46,7 +46,6 @@ else
     notifies :restart, "service[shorewall]", :delayed
   end
 end
-
 
 template '/etc/default/shorewall' do
   source 'default.erb'

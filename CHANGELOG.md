@@ -1,5 +1,13 @@
 shorewall_ng CHANGELOG
 =======================
+0.4.0
+-----
+- removed old shorewall5 recipe since we only support 5.x anyways
+- remove old shorewall 4.x leftovers, since it is unsupported anyway
+- remove [shorewall][version] variable since it is never used at all
+- test against debian buster
+- ensure compatibility with buster and stretch at the same time ( shorewall 5.0 and 5.2 )
+- fix support for chef client 14+ 
 
 0.3.1
 -----

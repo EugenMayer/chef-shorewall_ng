@@ -6,7 +6,7 @@ description 'Configures and install Shorewall 5'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '0.4.0'
 
-recipe 'shorewall_ng', 'Configures and install Shorewall 4 and 5'
+recipe 'shorewall_ng', 'Configures and install Shorewall 5'
 
 %w{ debian ubuntu }.each do |os|
   supports os
