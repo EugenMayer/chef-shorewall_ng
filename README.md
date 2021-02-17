@@ -48,10 +48,6 @@ comparable to hand-written ones.
 
 This cookbook installs and configures shorewall on the your node.
 
-### shorewall_ng::shorewall5_jessie_fix
-
-(Yet debian jessie only) Ensure proper sources are added to install the shorewall 5.x package
-
 ## Attributes
 
 #### shorewall_ng::default
