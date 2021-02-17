@@ -21,46 +21,37 @@
 
 require 'set'
 
-enabled=(node['shorewall']['enabled'] ? 1 : 0 )
+enabled = (node['shorewall']['enabled'] ? 1 : 0)
 
-%w{ hosts interfaces policy rules zones tunnels masq }.each do |conf_file|
+%w[hosts interfaces policy rules zones tunnels masq].each do |conf_file|
   template "/etc/shorewall/#{conf_file}" do
     source "#{conf_file}.erb"
-    mode 0600
-    owner "root"
-    group "root"
-    notifies :restart, "service[shorewall]", :delayed
+    mode 0o600
+    owner 'root'
+    group 'root'
+    notifies :restart, 'service[shorewall]', :delayed
   end
 end
 
-if node[:platform].start_with?('debian') and node[:platform_version].start_with?('9')
-  # debian stretch is yet 5.0 based, so use the old configuration
-  template '/etc/shorewall/shorewall.conf' do
-    source 'shorewall5.0.conf.erb'
-    notifies :restart, "service[shorewall]", :delayed
-  end
-else
-  # else, assume the newest
-  template '/etc/shorewall/shorewall.conf' do
-    source 'shorewall5.1plus.conf.erb'
-    notifies :restart, "service[shorewall]", :delayed
-  end
+template '/etc/shorewall/shorewall.conf' do
+  source 'shorewall5.1plus.conf.erb'
+  notifies :restart, 'service[shorewall]', :delayed
 end
 
 template '/etc/default/shorewall' do
   source 'default.erb'
-  variables( 
-    :startup => enabled,
-    :default => node['shorewall']['default']
+  variables(
+    startup: enabled,
+    default: node['shorewall']['default']
   )
-  notifies :restart, "service[shorewall]", :delayed
+  notifies :restart, 'service[shorewall]', :delayed
 end
 
-service "shorewall" do
-  supports [ :status, :restart ]
+service 'shorewall' do
+  supports %i[status restart]
   if node['shorewall']['enabled']
-    action [:start, :enable]
+    action %i[start enable]
   else
-    action [:stop, :disable]
+    action %i[stop disable]
   end
 end
