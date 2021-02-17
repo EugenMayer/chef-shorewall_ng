@@ -11,10 +11,10 @@ This cookbook installs, configures and manages Shorewall.
 # Release
 
 ```bash
-bundle install --binstubs --without='development vagrant docker dokken integration'
-./bin/stove login --username <user>--key ~/.ssh/key.pem
+chef exec bundle install --binstubs --without='development vagrant docker dokken integration'
+chef exec login --username <user>--key ~/.ssh/key.pem
 # edit metadata.rb and release
-./bin/stove
+chef exec stove
 ```
 
 ## Tests
