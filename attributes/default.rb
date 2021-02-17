@@ -14,7 +14,7 @@ default['shorewall']['hosts'] = []
 default['shorewall']['rules'] = []
 default['shorewall']['zones'] = []
 default['shorewall']['tunnels'] = []
-default['shorewall']['masq'] = []
+default['shorewall']['snat'] = []
 
 # TODO: document which one differ from the OS defaults
 # shorewall 4 and 5
