@@ -1,11 +1,20 @@
 # shorewall_ng CHANGELOG
 
+## 0.6.0
+
+** BREAKING CHANGE **
+
+- Migrate from masq to snat configuration, see http://docs.swarmlab.io/SwarmLab-HowTos/labs/os2/ex-4_iptables.adoc.html#_snat_shorewall_snatmasquerade_definition_file
+- Migrate tests to dokken for faster tests
+
 ## 0.5.0
 
 - Remove debian jessie support
 - Remove LOAD_HELPERS_ONLY=yes from configuration, since it is unsupported now
 
 ---
+
+## 0.4.0
 
 - removed old shorewall5 recipe since we only support 5.x anyways
 - remove old shorewall 4.x leftovers, since it is unsupported anyway

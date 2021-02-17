@@ -1,34 +1,37 @@
 ---
 driver:
-  name: vagrant
+  hostname: test # Hostname is used in the tests so should be fixed
+  name: dokken
+
+transport:
+  name: dokken
 
 provisioner:
-  always_update_cookbooks: true
-  chef_license: accept
-  name: chef_zero
-  #nodes_path: test/fixtures/nodes
-  product_name: chef
-  product_version: 16
+  name: dokken
 
 verifier:
   name: inspec
 
 platforms:
-  # - name: eugenmayer/debian9
-  #   driver:
-  #     box: eugenmayer/debian9
-  #     box_version: '9.3.0'
-  - name: eugenmayer/debian10
+  - name: debian-10
     driver:
-      box: eugenmayer/debian10
-      box_version: '10.8.2'
-      #gui: true
+      image: dokken/debian-10
+      pid_one_command: /bin/systemd
+      privileged: true
 
 suites:
   - name: default
     run_list:
       - recipe[shorewall_ng_test::default]
-    verifier:
-      inspec_tests:
-        - test/recipes/default
     attributes:
+  - name: with-snat
+    run_list:
+      - recipe[shorewall_ng_test::default]
+    attributes:
+      shorewall:
+        snat:
+          - action: SNAT(206.124.146.177)
+            source: 172.20.1.0/29
+            dest: eth0
+            proto: tcp
+            ports: smtp

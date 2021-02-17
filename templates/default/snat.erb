@@ -1,14 +1,16 @@
 <%
 elements=[
-	['interface', 24],
+	['action', 40],
 	['source', 16],
-	['address', 16],
+	['dest',16],
 	['proto', 8],
-	['ports', 8],
+	['port', 8],
 	['ipsec', 8],
 	['mark', 8],
 	['user', 8],
-	['switch', 8]
+	['switch', 8],
+	['origdest', 8],
+	['probabilit', 8],
 ]
 %>
 #
@@ -20,6 +22,7 @@ elements=[
 # http://www.shorewall.net/manpages/shorewall-masq.html
 #
 ######################################################################################################
-#INTERFACE:DEST		SOURCE		ADDRESS		PROTO	PORT(S)	IPSEC	MARK	USER/	SWITCH
+#ACTION         SOURCE          DEST            PROTO   PORT   IPSEC  MARK   USER    SWITCH  ORIGDEST   PROBABILITY
 #											GROUP
-<%= shorewall_format_file(elements, node['shorewall']['masq']) %>
+<%= shorewall_format_file(elements, node['shorewall']['snat']) %>
+#LAST LINE -- DO NOT REMOVE

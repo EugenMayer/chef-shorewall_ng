@@ -23,9 +23,23 @@ require 'set'
 
 enabled = (node['shorewall']['enabled'] ? 1 : 0)
 
-%w[hosts interfaces policy rules zones tunnels masq].each do |conf_file|
+log (node['shorewall']['masq']).to_s do
+  level :info
+end
+
+%w[hosts interfaces policy rules zones tunnels].each do |conf_file|
   template "/etc/shorewall/#{conf_file}" do
     source "#{conf_file}.erb"
+    mode 0o600
+    owner 'root'
+    group 'root'
+    notifies :restart, 'service[shorewall]', :delayed
+  end
+end
+
+if node['shorewall']['snat'].count > 0
+  template '/etc/shorewall/snat' do
+    source 'snat.erb'
     mode 0o600
     owner 'root'
     group 'root'
