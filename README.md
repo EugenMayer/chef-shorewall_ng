@@ -1,8 +1,6 @@
-shorewall_ng Cookbook
-===========================
+# shorewall_ng Cookbook
 
-Description
------------
+## Description
 
 This cookbook enables you to configure a shorewall5 on a debian/ubunto based os a transparent, easy and encapsulated way
 
@@ -10,38 +8,54 @@ This cookbook enables you to configure a shorewall5 on a debian/ubunto based os 
 
 This cookbook installs, configures and manages Shorewall.
 
-Requirements
-------------
+# Release
+
+```bash
+bundle install --binstubs --without='development vagrant docker dokken integration'
+./bin/stove login --username <user>--key ~/.ssh/key.pem
+# edit metadata.rb and release
+./bin/stove
+```
+
+## Tests
+
+Run the test by using kitchen
+`chef exec kitchen test`
+
+## Requirements
 
 #### Chef
+
 Tested on 12 and 15 but newer and older version should work just fine.
 
 #### Platform
+
 The following platforms have been tested with this cookbook, meaning that the recipes run on these platforms without error:
+
 - `Ubuntu`
 - `Debian`(8/9/10)
 
-Capabilities
-------------
+## Capabilities
 
 It supports shorewall5, please see the recipes below.
 
 Creates pretty Shorewall configuration files intended to be aesthetically
 comparable to hand-written ones.
 
-Recipes
--------
+## Recipes
 
 ### shorewall_ng::default
-This cookbook installs and configures shorewall on the your node. 
+
+This cookbook installs and configures shorewall on the your node.
 
 ### shorewall_ng::shorewall5_jessie_fix
+
 (Yet debian jessie only) Ensure proper sources are added to install the shorewall 5.x package
 
-Attributes
-----------
+## Attributes
 
 #### shorewall_ng::default
+
 <table>
   <tr>
     <th>Key</th>
@@ -137,17 +151,14 @@ Attributes
 
 For more details, see the `attributes/default.rb` file.
 
-Usage
------
+## Usage
 
 Just include `shorewall_ng` in your node's `run_list`:
 
 ```json
 {
-  "name":"my_node",
-  "run_list": [
-    "recipe[shorewall_ng]"
-  ]
+  "name": "my_node",
+  "run_list": ["recipe[shorewall_ng]"]
 }
 ```
 
@@ -207,9 +218,9 @@ Examples:
       "description": "Accept NTP connections from the firewall to the network",
       "action": "NTP(ACCEPT)", "source": "fw", "dest": "net"
     },
-    { 
-      "description": "Incoming SSH to firewall", 
-      "source": "all", "dest": "fw", "proto": "tcp", "dest_port": 22, "action": "ACCEPT" 
+    {
+      "description": "Incoming SSH to firewall",
+      "source": "all", "dest": "fw", "proto": "tcp", "dest_port": 22, "action": "ACCEPT"
     },
     {
       "description": "Accept HTTP/HTTPS connections to internet",
@@ -242,7 +253,7 @@ Examples:
   "tunnels": [
     { "type": "ipsec", "zone": "net", "gateway": "0.0.0.0/0", "gateway_zones": "vpn" }
   ]
-}  
+}
 ```
 
 - Setting Masquerade
@@ -265,9 +276,7 @@ Examples:
 }
 ```
 
-
-Configuration
--------------
+## Configuration
 
 The following is a typical example of output (in this case, for a rules file):
 
@@ -298,25 +307,7 @@ The following is a typical example of output (in this case, for a rules file):
 
 Note how line continuations are added as necessary to keep column alignment in place.
 
-
-
-# Release
-
-```bash
-bundle install --binstubs --without='development vagrant docker dokken integration' 
-./bin/stove login --username <user>--key ~/.ssh/key.pem
-# edit metadata.rb and release
-./bin/stove 
-```
-
-Tests
------
-
-Run the test by using kitchen
-```kitchen test```
-
-Contributing
-------------
+## Contributing
 
 I am very happy to accept this PRs or work on issues to extend the usage of this cookbook.
 
@@ -327,21 +318,18 @@ Just use the [issue queue](https://github.com/EugenMayer/chef-shorewall_ng/issue
 You can run the test using kitchen
 
     chef exec kitchen converge
-    
-There are to test suites, `default` for testing  `shorewall5` to ensure we can install shorewall5 e.g. for docker support.
 
-Credits 
------------
+There are to test suites, `default` for testing `shorewall5` to ensure we can install shorewall5 e.g. for docker support.
+
+## Credits
 
 This cookbook is heavily based on the nowdays no longer maintained cookbook https://github.com/demonccc/chef-shorewall_reloaded - thank you for you hard work Claudio!
 
-License and Authors
--------------------
+## License and Authors
 
-Author:: Eugen Mayer (eugenmayer on github) 
+Author:: Eugen Mayer (eugenmayer on github)
 
 Old Author:: Claudio Cesar Sanchez Tejeda <demonccc@gmail.com>
-
 
 Copyright:: 2017, Eugen Mayer
 
