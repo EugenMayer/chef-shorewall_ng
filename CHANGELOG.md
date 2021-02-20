@@ -9,10 +9,16 @@
 
 ## 0.5.0
 
-- Remove debian jessie support
+** BREAKING CHANGE **
+
+- Remove debian jessie and stretch support (shorewall 5.1+ only)
 - Remove LOAD_HELPERS_ONLY=yes from configuration, since it is unsupported now
 
 ---
+
+## 0.4.1
+
+- smaller bugfixes
 
 ## 0.4.0
 
